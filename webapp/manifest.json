@@ -47,6 +47,8 @@
 		  }
 		},
 		"invoice": {
+		  "type": "sap.ui.model.json.JSONModel",
+          "uri": "Invoices.json",
 		  "dataSource": "invoiceRemote"
 		}
 	  },
@@ -63,37 +65,36 @@
 		]
 	  },
 	  "routing": {
-		"config": {
-		  "routerClass": "sap.m.routing.Router",
-		  "type": "View",
-		  "viewType": "XML",
-		  "path": "ui5.walkthrough.view",
-		  "controlId": "app",
-		  "controlAggregation": "pages"
+	  "config": {
+		"routerClass": "sap.m.routing.Router",
+		"type": "View",
+		"viewType": "XML",
+		"path": "ui5.walkthrough.view",
+		"controlId": "app",
+		"controlAggregation": "pages"
+	  },
+	  "routes": [
+		{
+		  "pattern": "",
+		  "name": "overview",
+		  "target": "overview"
 		},
-		"routes": [
-		  {
-			"pattern": "",
-			"name": "overview",
-			"target": "overview"
-		  },
-		  {
-			"pattern": "detail",
-			"name": "detail",
-			"target": "detail"
-		  }
-		],
-		"targets": {
-		  "overview": {
-			"id": "overview",
-			"name": "Overview"
-		  },
-		  "detail": {
-			"id": "detail",
-			"name": "Detail"
-		  }
+		{
+		  "pattern": "detail/{invoicePath}",
+		  "name": "detail",
+		  "target": "detail"
+		}
+	  ],
+		  "targets": {
+		"overview": {
+		  "id": "overview",
+		  "name": "Overview"
+		},
+		"detail": {
+		  "id": "detail",
+		  "name": "Detail"
 		}
 	  }
 	}
   }
-  
+}

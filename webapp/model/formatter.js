@@ -1,16 +1,19 @@
-sap.ui.define(["sap/ui/core/format/DateFormat"], function (DateFormat) {
+sap.ui.define([], () => {
 	"use strict";
 
 	return {
-		statusText: function (status) {
-		  if (status === "A") {
-			return "Active";
-		  } else if (status === "B") {
-			return "Backordered";
-		  } else if (status === "C") {
-			return "Cancelled";
-		  }
-		  return "";
+		statusText(sStatus) {
+			const oResourceBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+			switch (sStatus) {
+				case "A":
+					return oResourceBundle.getText("invoiceStatusA");
+				case "B":
+					return oResourceBundle.getText("invoiceStatusB");
+				case "C":
+					return oResourceBundle.getText("invoiceStatusC");
+				default:
+					return sStatus;
+			}
 		}
-	  };
-	});
+	};
+});

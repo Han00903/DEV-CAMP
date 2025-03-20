@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/mvc/Controller","sap/m/MessageToast"],(e,t)=>{"use strict";return e.extend("ui5.walkthrough.controller.App",{onShowHello(){const e=this.getView().getModel("i18n").getResourceBundle();const o=this.getView().getModel().getProperty("/recipient/name");const s=e.getText("helloMsg",[o]);t.show(s)}})});
+//# sourceMappingURL=App.controller.js.map
